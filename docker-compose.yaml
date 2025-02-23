@@ -1,0 +1,29 @@
+version: '3'
+services:
+  db:
+    image: postgres:15
+    container_name: mi_asistente_db
+    restart: always
+    environment:
+      POSTGRES_DB: mi_asistente_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+  nest_app:
+    build: .
+    container_name: mi_asistente_nest
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_NAME: mi_asistente_db
+volumes:
+  db_data:
