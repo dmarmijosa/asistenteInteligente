@@ -5,6 +5,7 @@ import {TypeOrmModule} from "@nestjs/typeorm";
 import {CarsModule} from './cars/cars.module';
 import {Car} from "./cars/entities/car.entity";
 import {ConfigModule} from "@nestjs/config";
+import { AiModule } from './ai/ai.module';
 
 // @ts-ignore
 @Module({
@@ -22,7 +23,8 @@ import {ConfigModule} from "@nestjs/config";
          entities: [Car],
          synchronize: true,
       }),
-      CarsModule
+      CarsModule,
+      AiModule
    ],
    controllers: [AppController],
    providers: [AppService],
