@@ -7,7 +7,6 @@ import {CarsModule} from "../cars/cars.module";
 @Module({
   imports:[CarsModule],
   controllers: [AiController],
-  providers: [ OpenAiService],
-  exports: [AiService],
+  providers: [ OpenAiService]
 })
 export class AiModule {}
